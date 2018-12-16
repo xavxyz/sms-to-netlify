@@ -1,0 +1,35 @@
+{
+  "name": "onethought",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "@reach/rect": "^0.1.1",
+    "@zeit/next-css": "^1.0.1",
+    "apollo-boost": "^0.1.16",
+    "dotenv": "^6.1.0",
+    "graphql": "^14.0.2",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^7.0.2",
+    "onegraph-auth": "^0.2.18",
+    "polished": "^2.3.0",
+    "react": "^16.6.1",
+    "react-apollo": "^2.1.11",
+    "react-dom": "^16.6.1",
+    "styled-components": "^4.1.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-styled-components": "^1.9.4",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "eslint": "^5.9.0",
+    "flow-bin": "^0.86.0",
+    "glow": "^1.2.2"
+  }
+}
