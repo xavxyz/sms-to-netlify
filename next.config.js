@@ -12,4 +12,9 @@ module.exports = {
     ONEGRAPH_APP_ID: process.env.ONEGRAPH_APP_ID,
     TWILIO_NUMBER: process.env.TWILIO_NUMBER,
   },
+  exportPathMap: function() {
+    return {
+      '/': { page: '/' },
+    };
+  },
 };
