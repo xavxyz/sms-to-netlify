@@ -40,10 +40,10 @@ export default () => (
       variables={{ to: TWILIO_NUMBER }}
     >
       {({ data }) => {
-        if (data) {
-          const messages = data.twilio.messages.edges.reverse();
-
-          return messages.map(({ node }, index) => (
+        return data.twilio.messages.edges
+          .slice()
+          .reverse()
+          .map(({ node }, index) => (
             <Rect key={node.sid}>
               {({ ref, rect }) => {
                 const offset =
