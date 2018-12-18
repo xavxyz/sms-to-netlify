@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import Rect from '@reach/rect';
 import getConfig from 'next/config';
 
+import AssetPrefetch from '../components/AssetPrefetch';
 import Background from '../components/Background';
 import AbsolutePositioner from '../components/AbsolutePositioner';
 import Floater from '../components/Floater';
@@ -18,15 +19,7 @@ const {
 
 export default () => (
   <>
-    <Background>
-      <AbsolutePositioner top={8} left={12}>
-        <Floater>
-          <Dot by={2}>
-            <Dot invert />
-          </Dot>
-        </Floater>
-      </AbsolutePositioner>
-    </Background>
+    <AssetPrefetch src="static/cursor-pointer-clicked.png" />
     <Query
       query={gql`
         query getThoughts($to: String) {

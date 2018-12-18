@@ -7,6 +7,7 @@ const Text = styled.p`
   font-size: 8vw;
   max-width: 60vw;
   text-align: center;
+  font-weight: 700;
 `;
 
 export default Text;

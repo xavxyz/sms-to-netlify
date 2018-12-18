@@ -13,17 +13,10 @@ export const floatTo = keyframes`
 `;
 
 export const GlobalStyles = createGlobalStyle`
-  @font-face {
-    font-family: Apercu;
-    font-style: normal;
-    font-weight: 400;
-    src: url(static/apercu.ttf);
-  }
-
   body {
     margin: 0;
     background-color: #000;
-    font-family: Apercu, sans-serif;
-
+    font-family: futura-pt, sans-serif;
+    cursor: url(static/cursor-auto.png), auto;
   }
 `;

@@ -51,11 +51,12 @@ export default class extends App {
     return (
       <Container>
         <Head>
-          <title>Xavier's Thoughts</title>
+          <title>Deploy Teller — by Xavier Cazalot</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <link rel="stylesheet" href="https://use.typekit.net/ayh2bbx.css" />
         </Head>
         <ApolloProvider client={client}>
           <Page {...pageProps} />
