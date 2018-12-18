@@ -12,6 +12,7 @@ import Dot from '../components/Dot';
 import FixedCenter from '../components/FixedCenter';
 import Text from '../components/Text';
 import ViewportBlock from '../components/ViewportBlock';
+import Anchor from '../components/Anchor';
 
 const {
   publicRuntimeConfig: { TWILIO_NUMBER },
@@ -82,9 +83,15 @@ export default () => (
     </Query>
     <FixedPositioner top={8} left={12}>
       <Floater>
+        <Anchor
+          href="https://twitter.com/xavczen"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Dot by={2}>
             <Dot invert />
           </Dot>
+        </Anchor>
       </Floater>
     </FixedPositioner>
   </>
