@@ -1,9 +1,9 @@
 // @flow
 import styled from 'styled-components';
 
-const ViewportBlock = styled.div`
+const ViewBox = styled.div`
   height: 100vh;
   pointer-events: none;
 `;
 
-export default ViewportBlock;
+export default ViewBox;
