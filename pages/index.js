@@ -60,6 +60,16 @@ export default () => (
                   <>
                     <FixedCenter>
                       <Text
+                        tabIndex={index + 1}
+                        onFocus={e => {
+                          // this is soooo flaky, haha
+                          // but honestly, on this project, who cares?
+                          // I'm having fun, it's the most important thing
+                          // note: too lazy to refactor in its own component or what?
+                          e.currentTarget.parentElement.nextElementSibling.scrollIntoView(
+                            { behavior: 'smooth' }
+                          );
+                        }}
                         style={{
                           // prettier-ignore
                           opacity: Math.max(0, opacity > 1 || offset > 2 ? 0 : opacity),
@@ -78,7 +88,6 @@ export default () => (
               }}
             </Rect>
           ));
-        }
       }}
     </Query>
     <FixedPositioner top={8} left={12}>
