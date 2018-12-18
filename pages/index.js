@@ -6,7 +6,7 @@ import getConfig from 'next/config';
 
 import AssetPrefetch from '../components/AssetPrefetch';
 import Background from '../components/Background';
-import AbsolutePositioner from '../components/AbsolutePositioner';
+import FixedPositioner from '../components/FixedPositioner';
 import Floater from '../components/Floater';
 import Dot from '../components/Dot';
 import FixedCenter from '../components/FixedCenter';
@@ -20,6 +20,7 @@ const {
 export default () => (
   <>
     <AssetPrefetch src="static/cursor-pointer-clicked.png" />
+    <Background />
     <Query
       query={gql`
         query getThoughts($to: String) {
@@ -79,5 +80,12 @@ export default () => (
         }
       }}
     </Query>
+    <FixedPositioner top={8} left={12}>
+      <Floater>
+          <Dot by={2}>
+            <Dot invert />
+          </Dot>
+      </Floater>
+    </FixedPositioner>
   </>
 );

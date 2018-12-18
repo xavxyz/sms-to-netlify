@@ -9,12 +9,12 @@ type Props = {
   right?: number,
 };
 
-const AbsolutePositioner: ComponentType<Props> = styled.div`
-  position: absolute;
+const FixedPositioner: ComponentType<Props> = styled.div`
+  position: fixed;
   ${props => props.top && `top: ${props.top}rem;`}
   ${props => props.left && `left: ${props.left}rem;`}
   ${props => props.bottom && `bottom: ${props.bottom}rem;`}
   ${props => props.right && `right: ${props.right}rem;`}
 `;
 
-export default AbsolutePositioner;
+export default FixedPositioner;
