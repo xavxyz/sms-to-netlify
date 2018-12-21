@@ -8,7 +8,6 @@ import Background from '../components/Background';
 import FixedPositioner from '../components/FixedPositioner';
 import Floater from '../components/Floater';
 import Dot from '../components/Dot';
-import Anchor from '../components/Anchor';
 import MessageBox from '../components/MessageBox';
 
 const {
@@ -47,7 +46,7 @@ export default () => (
     </Query>
     <FixedPositioner top={8} left={12}>
       <Floater>
-        <Anchor
+        <a
           href="https://twitter.com/xavczen"
           target="_blank"
           rel="noopener noreferrer"
@@ -55,7 +54,7 @@ export default () => (
           <Dot by={2}>
             <Dot invert />
           </Dot>
-        </Anchor>
+        </a>
       </Floater>
     </FixedPositioner>
   </>
