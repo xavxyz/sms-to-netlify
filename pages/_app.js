@@ -76,6 +76,11 @@ if (!process.browser) {
   global.fetch = fetch;
 }
 
+// Polyfill IntersectionObserver on the client for WebKit browsers
+if (process.browser) {
+  require('intersection-observer');
+}
+
 function create(initialState) {
   return new ApolloClient({
     connectToDevTools: process.browser,

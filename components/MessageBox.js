@@ -22,48 +22,84 @@ type Props = {
   body: string,
 };
 
-export default class MessageBox extends React.Component<Props> {
+type State = {
+  opacity: number,
+  scale: number,
+};
+
+export default class MessageBox extends React.Component<Props, State> {
+  state = {
+    opacity: 0.0,
+    scale: 1,
+  };
+
+  viewBox: { current: null | HTMLElement } = React.createRef();
+
+  intersectionObserver: IntersectionObserver;
+
+  componentDidMount() {
+    this.intersectionObserver = new IntersectionObserver(
+      entries =>
+        entries.forEach(
+          ({ isIntersecting, intersectionRatio, boundingClientRect }) => {
+            if (!isIntersecting) {
+              this.setState({
+                opacity: 0,
+                scale: 1,
+              });
+            } else {
+              this.setState(state => {
+                // prettier-ignore
+                return {
+                    opacity: intersectionRatio <= 0.1 ? 0 : intersectionRatio,
+                    scale: boundingClientRect.y > 0 ? 2 - intersectionRatio : intersectionRatio,
+                  };
+              });
+            }
+          }
+        ),
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: Array.from({ length: 10 }, (_, index) => index * 0.1),
+      }
+    );
+
+    if (this.viewBox.current) {
+      this.intersectionObserver.observe(this.viewBox.current);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.viewBox.current) {
+      this.intersectionObserver.unobserve(this.viewBox.current);
+    }
+  }
+
   render() {
     return (
-      <Rect key={this.props.sid}>
-        {({ ref, rect }) => {
-          const offset =
-            rect && Number(((rect.y * 2) / window.innerHeight).toFixed(1)) + 1;
-
-          const opacity = offset
-            ? window.innerHeight * this.props.index <=
-              this.props.index * window.innerHeight + rect.y
-              ? Math.abs(offset - 2)
-              : offset
-            : 0;
-          return (
-            <>
-              <FixedCenter>
-                <Text
-                  tabIndex={1}
-                  onFocus={e => {
-                    // this is soooo flaky, haha
-                    // but honestly, on this project, who cares?
-                    // I'm having fun, it's the most important thing
-                    // note: too lazy to refactor in its own component or what?
-                    e.currentTarget.parentElement.nextElementSibling.scrollIntoView(
-                      { behavior: 'smooth' }
-                    );
-                  }}
-                  style={{
-                    // prettier-ignore
-                    opacity: Math.max(0, opacity > 1 || offset > 2 ? 0 : opacity),
-                    transform: `scale(${Math.max(0, Math.min(offset, 2))})`,
-                    pointerEvents: opacity >= 0.9 && 'initial',
-                  }}
-                    dangerouslySetInnerHTML={{ __html: linkdown(this.props.body) }}
-                />
-              </FixedCenter>
-        <ViewBox ref={ref} />
-            </>
-          );
-        }}
-      </Rect>
+      <>
+        <FixedCenter>
+          <Text
+            tabIndex={1}
+            onFocus={() => {
+              if (this.viewBox.current) {
+                this.viewBox.current.scrollIntoView({
+                  behavior: 'smooth',
+                });
+              }
+            }}
+            style={{
+              transition: 'opacity 0.1s linear, transform 0.1s linear',
+              opacity: this.state.opacity,
+              transform: `scale(${this.state.scale})`,
+              pointerEvents: this.state.opacity >= 0.9 && 'initial',
+            }}
+            dangerouslySetInnerHTML={{ __html: linkdown(this.props.body) }}
+          />
+        </FixedCenter>
+        <ViewBox ref={this.viewBox} />
+      </>
     );
   }
 }

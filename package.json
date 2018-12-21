@@ -13,6 +13,7 @@
     "apollo-boost": "^0.1.16",
     "dotenv": "^6.1.0",
     "graphql": "^14.0.2",
+    "intersection-observer": "^0.5.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^7.0.2",
     "onegraph-auth": "^0.2.18",
