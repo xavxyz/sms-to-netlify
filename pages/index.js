@@ -47,7 +47,7 @@ export default () => (
     <FixedPositioner top={8} left={12}>
       <Floater>
         <a
-          href="https://twitter.com/xavczen"
+          href="https://twitter.com/xavxyz"
           target="_blank"
           rel="noopener noreferrer"
         >
